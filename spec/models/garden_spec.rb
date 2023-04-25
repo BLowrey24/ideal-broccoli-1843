@@ -29,6 +29,9 @@ RSpec.describe Garden do
     describe '#quick_harvist_plants' do
       it 'returns the plants of the gardens plots that are uniq and less then 100 days to harvist' do
         expect(@garden1.quick_harvest_plants).to eq([@plant1, @plant3])
+
+        # didn't have time to refactor this test but this is what it would need to be for it to pass.
+        # expect(@garden1.quick_harvest_plants).to eq([@plant1.name, @plant3.name])
       end
     end
   end

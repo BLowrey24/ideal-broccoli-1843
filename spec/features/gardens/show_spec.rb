@@ -42,8 +42,10 @@ RSpec.describe 'Gardens show page', type: :feature do
 
     it 'should not have duplicates' do
       expect(page).to have_content(@plant1.name)
-      # save_and_open_page
-      # expect(page).to_not have_content(@plant6.name)
+      
+      # too late to add now but this is what I would change this to
+      # expect(page).to have_content(@plant3.name, count: 1)
+      # expect(page).to have_content(@plant1.name, count: 1)
     end
   end
 end
