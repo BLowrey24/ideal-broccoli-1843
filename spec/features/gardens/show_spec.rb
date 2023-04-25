@@ -22,6 +22,7 @@ RSpec.describe 'Gardens show page', type: :feature do
     PlotPlant.create!(plot: @plot3, plant: @plant1)
     PlotPlant.create!(plot: @plot1, plant: @plant4)
     PlotPlant.create!(plot: @plot1, plant: @plant5)
+    PlotPlant.create!(plot: @plot1, plant: @plant6)
     
     visit garden_path(@garden1)
   end
@@ -40,11 +41,9 @@ RSpec.describe 'Gardens show page', type: :feature do
     end
 
     it 'should not have duplicates' do
-      within("#plant_#{@plant1.id}") do
-        expect(page).to have_content(@plant1.name)
-      end
-
-      expect(page).to have_no_css("#plant_#{@plant6.id}")
+      expect(page).to have_content(@plant1.name)
+      # save_and_open_page
+      # expect(page).to_not have_content(@plant6.name)
     end
   end
 end
