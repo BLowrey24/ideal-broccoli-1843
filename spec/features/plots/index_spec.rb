@@ -15,6 +15,7 @@ RSpec.describe 'Plots index page', type: :feature do
     PlotPlant.create!(plot: @plot1, plant: @plant1)
     PlotPlant.create!(plot: @plot2, plant: @plant2)
     PlotPlant.create!(plot: @plot3, plant: @plant3)
+    PlotPlant.create!(plot: @plot3, plant: @plant1)
 
     visit plots_path
   end
@@ -28,6 +29,20 @@ RSpec.describe 'Plots index page', type: :feature do
       expect(page).to have_content(@plant1.name)
       expect(page).to have_content(@plant2.name)
       expect(page).to have_content(@plant3.name)
+    end
+
+    it 'has a button to delete the plant from the plot' do
+      expect(page).to have_button("Remove Plant")
+
+      within("#plot_#{@plot1.id}") do
+        within("#plant_#{@plant1.id}") do
+          click_button "Remove Plant"
+        end
+      end
+       
+      within("#plot_#{@plot3.id}") do
+        expect(page).to have_content(@plant1.name)
+      end
     end
   end
 end

@@ -2,11 +2,15 @@
 
 <ul>
   <% @plots.each do |plot| %>
-    <li>Number of Plots: <%= plot.number %></li>
+    <li id="plot_<%= plot.id %>">Number of Plots: <%= plot.number %>
       <ul>
         <% plot.plants.each do |plant| %>
-          <li>Plants: <%= plant.name %></li>
+          <li id="plant_<%= plant.id %>">
+            Plants: <%= plant.name %><br>
+            <%= button_to "Remove Plant", plot_plant_path(plot.id, plant.id), method: :delete%>
+          </li>
         <% end %>
       </ul>
+    </li>
   <% end %>
 </ul>
