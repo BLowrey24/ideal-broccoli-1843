@@ -27,7 +27,6 @@ RSpec.describe 'Gardens show page', type: :feature do
 
   describe 'when I visit a Gardens show page' do
     it 'I see a list of plants that are incleded in that gardens plots' do
-      save_and_open_page
       expect(page).to have_content(@plant1.name)
       expect(page).to have_content(@plant3.name)
       expect(page).to_not have_content(@plant4.name)
